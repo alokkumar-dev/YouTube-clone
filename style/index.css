@@ -1,0 +1,16 @@
+.container{
+    width: 100%;
+    margin:20px auto;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+#video{
+    font-size: 20px;
+    padding:10px;
+    width: 30%;
+}
+#searchBtn{
+    color: red;
+    font-size: 20px;
+    padding: 10px 20px;
+}
