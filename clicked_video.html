@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <!-- font awesome link here... -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./style/clicked_video.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logoSide">
+            <i class="fal fa-bars"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png"
+                alt="youtube logo">
+            <h1>YouTube </h1><sup>IN</sup>
+        </div>
+        <div class="searchSide">
+            <input type="text" id="video" placeholder="Search">
+            <hr>
+            <span onclick="searchVideo()" id="searchBtn"><i class="far fa-search"></i></span>
+
+        </div>
+        <i class="fas fa-microphone"></i>
+        <div class="accountSide">
+            <a href="#"><i class="far fa-video-plus"></i></a>
+            <a href="#"><i class="fas fa-th"></i></a>
+            <a href="#"><i class="far fa-bell"></i></a>
+            <a href="#"><i class="fas fa-user-circle"></i></a>
+        </div>
+
+    </nav>
+<div class="content">
+    <div class="selected_video"></div>
+    <div class="recommend_videos"></div>
+</div>
+
+</body>
+
+</html>
+<script src="./script/clicked_video.js"></script>

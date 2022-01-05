@@ -87,33 +87,23 @@ nav {
     color: #6e6e6e;
 }
 
-
-#search_result {
-    /* cursor: pointer; */
-    margin: 20px auto;
-    width: 90%;
-    /* border: 1px solid black; */
-    display: grid; 
-    grid-template-columns:repeat(4,1fr);
-    grid-gap: 10px;
-
+.content{
+    display: flex;
+    height: 550px;
+    /* height: auto; */
+    margin: 20px;
 }
-#search_result >div{
-
-    height: auto;
-    cursor: pointer;
+.selected_video{
+    flex: 3;
+    margin-right: 20px;
     border: 1px solid black;
-
 }
-#search_result >div>div{
-    width: 100%;
-    height: 60%;
-    /* border: 1px solid black; */
-
-}
-#search_result >div>div>img{
-    width: 100%;
+.selected_video>iframe{
     height: 100%;
-    /* border: 1px solid black; */
-
+    width: 100%;
+    border: none;
+}
+.recommend_videos{
+    flex: 2;
+    border: 1px solid black;
 }

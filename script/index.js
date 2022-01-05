@@ -19,6 +19,30 @@ let searchDiv = document.getElementById("search_result");
 
 
     }
+    // difault video write script start here 
+
+    async function defaultVideos() {
+        try {
+            const video_query = document.getElementById("video").value;
+
+
+            let responce = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${video_query}&type=video&key=AIzaSyCgsyGlp11ZNXS9sRV2eBhqEkXZLUqITps&maxResults=20&part=snippet`);
+
+            let data = await responce.json();
+            console.log("Data : ", data);
+
+            let videos = data.items;
+            appendVideos(videos);
+
+        }
+        catch (err) {
+            console.log("Error", err);
+        }
+
+
+    }
+    defaultVideos();
+    // difault video write script End here 
     // searchVideo();
 
     const appendVideos = (reslts) => {
@@ -27,17 +51,30 @@ let searchDiv = document.getElementById("search_result");
 
             // console.log("snippet", snippet);
             let div = document.createElement("div");
+            let imgDiv = document.createElement("div");
             let title= document.createElement("h3");
             title.innerText = snippet.title;
 
             let thumbnail = document.createElement("img");
             thumbnail.src = snippet.thumbnails.medium.url;
 
-            div.append(thumbnail,title);
-            
+            let data_to_send = {
+                snippet,
+                videoId
+            }
+            div.onclick = () =>{
+                showVideo(data_to_send);
+            }
 
+            imgDiv.append(thumbnail)
+            div.append(imgDiv,title);
             searchDiv.append(div);
         });
-    }
+    };
+function showVideo(data){
+
+    localStorage.setItem("youtube_clicked_video", JSON.stringify(data))
+    window.location.href = "clicked_video.html";
+}
 
 
