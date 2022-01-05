@@ -96,7 +96,7 @@ nav {
 .selected_video{
     flex: 3;
     margin-right: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .selected_video>iframe{
     height: 100%;
@@ -105,5 +105,25 @@ nav {
 }
 .recommend_videos{
     flex: 2;
-    border: 1px solid black;
+    overflow-x: auto;
+    /* border: 1px solid black; */
+}
+.recommend_videos>div{
+    display: flex;
+    margin-bottom: 7px;
+}
+.recommend_videos>div>div:nth-child(1){
+    flex: 2;
+    /* border: 1px solid black; */
+    margin-right: 7px;
+    cursor: pointer;
+}
+.recommend_videos>div>div:nth-child(1)>img{
+    height: 100%;
+    width: 100%;
+}
+.recommend_videos>div>div:nth-child(2){
+    flex: 3;
+    cursor: pointer;
+    /* border: 1px solid black; */
 }
