@@ -52,7 +52,7 @@ let searchDiv = document.getElementById("search_result");
             // console.log("snippet", snippet);
             let div = document.createElement("div");
             let imgDiv = document.createElement("div");
-            let title= document.createElement("h3");
+            let title= document.createElement("h4");
             title.innerText = snippet.title;
 
             let thumbnail = document.createElement("img");
