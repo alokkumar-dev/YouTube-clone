@@ -89,20 +89,20 @@ nav {
 
 
 #search_result {
-    /* cursor: pointer; */
     margin: 20px auto;
     width: 90%;
-    /* border: 1px solid black; */
     display: grid; 
+    overflow-x: auto;
     grid-template-columns:repeat(4,1fr);
     grid-gap: 10px;
-
 }
 #search_result >div{
-
+    
     height: auto;
     cursor: pointer;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    padding: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
 #search_result >div>div{

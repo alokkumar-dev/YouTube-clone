@@ -4,8 +4,6 @@ nav {
     padding-top: 10px;
     margin: 10px auto;
     text-align: center;
-    /* position: fixed; */
-    /* border: 1px solid black; */
     justify-content: space-between;
 }
 
@@ -13,7 +11,6 @@ nav {
     width: 20%;
     font-family: Roboto, Arial, sans-serif;
 
-    /* border: 1px solid black; */
     display: flex;
 }
 
@@ -59,13 +56,11 @@ nav {
 }
 
 #searchBtn {
-    /* margin-left: 0; */
     padding: 10px 20px;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     background-color: rgba(219, 219, 219, 0.932);
-    /* border: 1px solid black; */
 }
 
 .fa-microphone {
@@ -78,7 +73,6 @@ nav {
     width: 20%;
     display: flex;
     padding-top: 10px;
-    /* border: 1px solid black; */
     justify-content: space-around;
 }
 
@@ -90,13 +84,11 @@ nav {
 .content{
     display: flex;
     height: 550px;
-    /* height: auto; */
     margin: 20px;
 }
 .selected_video{
     flex: 3;
     margin-right: 20px;
-    /* border: 1px solid black; */
 }
 .selected_video>iframe{
     height: 100%;
@@ -106,15 +98,14 @@ nav {
 .recommend_videos{
     flex: 2;
     overflow-x: auto;
-    /* border: 1px solid black; */
-}
+    }
 .recommend_videos>div{
     display: flex;
     margin-bottom: 7px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .recommend_videos>div>div:nth-child(1){
     flex: 2;
-    /* border: 1px solid black; */
     margin-right: 7px;
     cursor: pointer;
 }
@@ -125,5 +116,4 @@ nav {
 .recommend_videos>div>div:nth-child(2){
     flex: 3;
     cursor: pointer;
-    /* border: 1px solid black; */
 }
