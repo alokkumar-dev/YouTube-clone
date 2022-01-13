@@ -7,26 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
     <style>
-       
-     /* form style start here... */
-     .container{
-         padding: 20px 40px 70px 40px;
-        width: 300px;
-        /* border: 1px solid black; */
-        border-radius: 10px;
-        margin: auto;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: rgb(201, 245, 247);
-    }
-    .container>h2{
-        text-align: center;
-        min-width: 0;
-        font-size: 30px;
-        font-family: Arial, Helvetica, sans-serif;
-        /* font-weight: bold; */
-    }
-    input {
+        /* form style start here... */
+        .container {
+            padding: 20px 40px 70px 40px;
+            width: 300px;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            margin: auto;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgb(201, 245, 247);
+        }
+
+        .container>h2 {
+            text-align: center;
+            min-width: 0;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            /* font-weight: bold; */
+        }
+
+        input {
             width: 290px;
             height: 30px;
             font-size: 16px;
@@ -47,22 +48,25 @@
             width: 300px;
             height: 35px;
             border-radius: 2px;
+            cursor: pointer;
         }
 
-    /* form style end here */
+        /* form style end here */
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <h2>Login</h2>
-        <label for="username">Username</label><br>
-        <input type="text" id="username"><br>
+        <form onsubmit="login(event)">
+            <h2>Login</h2>
+            <label for="username">Username</label><br>
+            <input type="text" id="username"><br>
 
-        <label for="password">Password</label><br>
-        <input type="password" id="password"><br>
-        <button class="loginBtn">Login</button>
+            <label for="password">password</label><br>
+            <input type="password" id="password"><br>
+            <button class="loginBtn">Login</button>
+        </form>
 
     </div>
 
@@ -70,6 +74,64 @@
 </body>
 
 </html>
-<script>
+<script src="./script/index.js">
+    async function login(event) {
+        event.preventDefault();
+        try {
+            let login_data = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
 
+
+            }
+
+            login_data = JSON.stringify(login_data);
+
+            let login_url = 'https://masai-api-mocker.herokuapp.com/auth/login';
+
+            let response = await fetch(login_url, {
+                method: "POST",
+                body: login_data,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            let data = await response.json();
+            console.log("data:", data);
+            // alert("Login Successful");
+            // window.location.href = "./index.html";
+
+            let username = document.getElementById("username").value;
+            getUser(username, data.token);
+        }
+        catch (error) {
+            console.log("Error form catch:", err);
+            // alert("Invelid username or password !");
+        }
+    }
+
+    async function getUser(username, token) {
+        try {
+            let api = `https://masai-api-mocker.herokuapp.com/user/${username}`;
+
+            let response = await fetch(api, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            let data = await response.json();
+            console.log("Data: ", data);
+            getdata(data);
+        }
+        catch (err) {
+            console.log("Error from catch :", err);
+        }
+
+    }
+
+function getdata(eve){
+    var name = document.getElementById("signin").innerText = eve.username;
+}
 </script>

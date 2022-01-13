@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup page</title>
     <style>
+        form {
+            padding: 20px 40px 50px 40px;
+            width: 300px;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            margin: auto;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgb(201, 245, 247);
+        }
 
-    /* form style start here... */
-    form{
-        padding: 20px 40px 50px 40px;
-        width: 300px;
-        /* border: 1px solid black; */
-        border-radius: 10px;
-        margin: auto;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: rgb(201, 245, 247);
-    }
-    form>h2{
-        text-align: center;
-        min-width: 0;
-        font-size: 30px;
-        font-family: Arial, Helvetica, sans-serif;
-        /* font-weight: bold; */
-    }
-    input {
+        form>h2 {
+            text-align: center;
+            min-width: 0;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        input {
             width: 290px;
             height: 30px;
             font-size: 16px;
@@ -46,37 +47,73 @@
             width: 300px;
             height: 35px;
             border-radius: 2px;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-
-    <form onsubmit="setDetails(event)">
+    <div class="container">
         <h2>SignUp</h2>
-        <label for="name">Name</label><br>
-        <input type="text" id="name" placeholder="enter name"><br>
-        
-        <label for="email">Email</label><br>
-        <input type="email" id="email" placeholder="enter email"><br>
+        <form onsubmit="register(event)">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" placeholder="enter name"><br>
 
-        <label for="password">Password</label><br>
-        <input type="password" id="password" placeholder="enter password"><br>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" placeholder="enter email"><br>
 
-        <label for="username">Username</label><br>
-        <input type="text" id="username" placeholder="enter username"><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" placeholder="enter password"><br>
 
-        <label for="mobile">Mobile</label><br>
-        <input type="number" id="mobile" placeholder="enter mobile"><br>        
+            <label for="username">Username</label><br>
+            <input type="text" id="username" placeholder="enter username"><br>
 
-        <label for="description">Description</label><br>
-        <input type="text" id="description" placeholder="enter description"><br>
+            <label for="mobile">Mobile</label><br>
+            <input type="number" id="mobile" placeholder="enter mobile"><br>
 
-        <input type="submit" value="Submit" id="submit">
+            <label for="description">Description</label><br>
+            <input type="text" id="description" placeholder="enter description"><br>
 
-       if you have already signup: <a href="./signin.html" >Signin</a>
-    </form>
+            <input type="submit" value="Submit" id="submit">
+
+            if you have already signup: <a href="./signin.html">Signin</a>
+        </form>
+    </div>
 </body>
+
 </html>
 <script>
-    
+
+        async function register(e) {
+            try {
+                e.preventDefault();
+                var register_data = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    password: document.getElementById("password").value,
+                    username: document.getElementById("username").value,
+                    mobile: document.getElementById("mobile").value,
+                    description: document.getElementById("description").value,
+                };
+
+                register_data = JSON.stringify(register_data);
+                console.log(register_data);
+            } catch (error) {
+                console.log(error);
+            }
+
+            let reg_api = `https://masai-api-mocker.herokuapp.com/auth/register`;
+
+            let response = await fetch(reg_api, {
+                method: "POST",
+                body: register_data,
+                headers: {
+                    "Content-Type": "application/json",
+                    
+                },
+            
+            });
+            let data = await response.json();
+            console.log(data);
+        }
 </script>
