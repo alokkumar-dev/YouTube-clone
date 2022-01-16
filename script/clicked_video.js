@@ -90,3 +90,17 @@ video_div.append(iframes);
 function searchVideo(){
     window.location.href= "./index.html";
 }
+
+let userData = JSON.parse(localStorage.getItem("autheData")) || [];
+showname(userData)
+function showname(data){
+    var name = document.getElementById("signin");
+    data.map(({username})=>{
+        
+        console.log(username);
+        name.innerText = username;
+        console.log(username);
+        
+    })
+
+}

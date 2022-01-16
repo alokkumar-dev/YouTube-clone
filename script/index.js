@@ -77,15 +77,16 @@ function showVideo(data){
     window.location.href = "clicked_video.html";
 }
 
-// let userData = JSON.parse(localStorage.getItem("autheData")) || [];
-// showname(userData)
-// function showname(data){
-//     var name = document.getElementById("signin");
-//     data.map(({username})=>{
+let userData = JSON.parse(localStorage.getItem("autheData")) || [];
+showname(userData)
+function showname(data){
+    var name = document.getElementById("signin");
+    data.map(({username})=>{
         
-//         console.log(username);
-//         name.innerText = username;
+        console.log(username);
+        name.innerText = username;
+        console.log(username);
         
-//     })
+    })
 
-// }
+}

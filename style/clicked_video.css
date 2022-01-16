@@ -117,3 +117,8 @@ nav {
     flex: 3;
     cursor: pointer;
 }
+
+#signin{
+    font-size: 24px;
+    font-weight: bolder;
+}

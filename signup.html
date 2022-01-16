@@ -97,7 +97,8 @@
                 };
 
                 register_data = JSON.stringify(register_data);
-                console.log(register_data);
+           
+                // id(register)
             } catch (error) {
                 console.log(error);
             }
@@ -115,5 +116,13 @@
             });
             let data = await response.json();
             console.log(data);
+            if(data.error==false){
+                alert("Registration Successfull !");
+                
+            }
+            else{
+                alert("Registration failed, user already exists");
+
+            }
         }
 </script>

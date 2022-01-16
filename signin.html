@@ -65,7 +65,8 @@
 
             <label for="password">password</label><br>
             <input type="password" id="password"><br>
-            <button class="loginBtn">Login</button>
+            <!-- <button class="loginBtn">Login</button> -->
+            <input type="submit" class="loginBtn" value="Login">
         </form>
 
     </div>
@@ -74,7 +75,8 @@
 </body>
 
 </html>
-<script src="./script/index.js">
+<script>
+
     async function login(event) {
         event.preventDefault();
         try {
@@ -97,17 +99,30 @@
                 },
             });
 
+            let username = document.getElementById("username").value;
+
             let data = await response.json();
             console.log("data:", data);
-            // alert("Login Successful");
-            // window.location.href = "./index.html";
-
-            let username = document.getElementById("username").value;
+            if(data.error == false && username !=""){
+                alert("Login Successful");
+                window.location.href = "./index.html";
+            }
+            else{
+                alert("Invalid login creadentials");
+                
+            }
+            
             getUser(username, data.token);
+            
+            if(data.error == false && username !=""){
+                getdata(username);
+
+            }
+            
         }
         catch (error) {
             console.log("Error form catch:", err);
-            // alert("Invelid username or password !");
+            alert("Invelid username or password !");
         }
     }
 
@@ -123,15 +138,22 @@
             });
             let data = await response.json();
             console.log("Data: ", data);
-            getdata(data);
+            
         }
         catch (err) {
             console.log("Error from catch :", err);
         }
-
+   
     }
 
+    var arr =[];
 function getdata(eve){
-    var name = document.getElementById("signin").innerText = eve.username;
+    // var name = document.getElementById("signin").value;
+    var obj = {
+        username:eve,
+    };
+    arr.push(obj);
+    console.log(obj);
+    localStorage.setItem("autheData", JSON.stringify(arr));
 }
 </script>
